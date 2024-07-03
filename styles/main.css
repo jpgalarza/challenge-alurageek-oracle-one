@@ -1,12 +1,16 @@
 @import url("normalize.css");
+@import url("header.css");
+@import url("footer.css");
+@import url("add.css");
+@import url("products.css");
 
 :root {
   --white: #ffffff;
   --black: #000000;
-  --header-color: #5300C8;
-  --header-font-color: #E5E5E5;
-  --card-color: #5D04D9;
+  --primary-color: #5300C8;
   --sencondary-color: #03318C;
+  --logo-font-color: #E5E5E5;
+  --card-color: #5D04D9;
 }
 
 * {
@@ -19,10 +23,39 @@ body {
   font-family: "IBM Plex Mono", monospace;
   font-style: normal;
   overflow-x: hidden;
+  color: var(--white);
+}
+
+.container {
+  padding: 10px;
 }
 
 .press-start-2p {
   font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   font-style: normal;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 8px;
+}
+
+.logo-container>h3 {
+  font-weight: 400;
+  font-size: 24px;
+  color: var(--logo-font-color);
+}
+
+.logo-container>img {
+  height: 56px;
+}
+
+.titles {
+  color: var(--black);
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 35px;
 }
