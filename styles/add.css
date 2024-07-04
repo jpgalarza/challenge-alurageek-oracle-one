@@ -43,3 +43,12 @@ form>input::placeholder {
   background-color: transparent;
   color: var(--sencondary-color);
 }
+
+
+@media screen and (min-width: 992px) {
+  .add-product {
+    padding-right: 0;
+    padding-left: 40px;
+    flex-grow: 1;
+  }  
+}

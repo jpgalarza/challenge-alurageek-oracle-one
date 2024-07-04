@@ -27,13 +27,16 @@ body {
 }
 
 .container {
-  padding: 10px;
+  padding: 10px; 
+  max-width: 422px;
+  margin: 0 auto;
 }
 
 .press-start-2p {
   font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   font-style: normal;
+  margin: 0;
 }
 
 .logo-container {
@@ -58,4 +61,23 @@ body {
   font-size: 24px;
   text-align: center;
   margin-bottom: 35px;
+}
+
+
+@media screen and (min-width: 576px) {
+  .container {
+    max-width: 628px;
+  }
+}
+
+
+@media screen and (min-width: 992px) {
+  main {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+  }
 }
