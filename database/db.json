@@ -1,52 +1,58 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Stormtrooper",
-      "price": "60,00",
+      "price": "60000.20",
       "image": "assets/images/imagen1.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Game Boy Classic",
-      "price": "60,00",
+      "price": "60",
       "image": "assets/images/imagen2.png"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Stormtrooper",
-      "price": "60,00",
+      "price": "10000",
       "image": "assets/images/imagen1.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Game Boy Classic",
-      "price": "60,00",
+      "price": "2000",
       "image": "assets/images/imagen2.png"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Stormtrooper",
-      "price": "60,00",
+      "price": "60",
       "image": "assets/images/imagen1.jpg"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Game Boy Classic",
-      "price": "60,00",
+      "price": "60",
       "image": "assets/images/imagen2.png"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Stormtrooper",
-      "price": "60,00",
+      "price": "60",
       "image": "assets/images/imagen1.jpg"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Game Boy Classic",
-      "price": "60,00",
+      "price": "60",
       "image": "assets/images/imagen2.png"
+    },
+    {
+      "id": "a2d5",
+      "name": "Juan Pablo Galarza",
+      "price": "12.02",
+      "image": "assets/images/default-image.png"
     }
   ]
 }
