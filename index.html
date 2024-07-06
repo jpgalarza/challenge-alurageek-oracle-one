@@ -29,11 +29,39 @@
         <div class="container">
           <h2 class="press-start-2p titles">AGREGAR PRODUCTO:</h2>
           <form id="form-data" class="form">
-            <input type="text" name="name" placeholder="nombre..."/>
-            <input type="text" name="price" placeholder="precio..."/>
-            <input type="text" name="image" placeholder="imagen..."/>
+            <div class="input-container">
+              <input
+                type="text"
+                name="name"
+                placeholder="nombre..."
+                minlength="2"
+                maxlength="50"
+                required
+              />
+              <p class="error-message"></p>
+            </div>
+            <div class="input-container">
+              <input
+                type="number"
+                name="price"
+                placeholder="precio..."
+                min="1"
+                step="0.01"
+                required
+              />
+              <p class="error-message"></p>
+            </div>
+            <div class="input-container">
+              <input 
+                type="text" 
+                name="image" 
+                placeholder="https://imagen..."
+                pattern="(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?"
+              />
+              <p class="error-message"></p>
+            </div>
             <div class="button-container">
-              <button class="button" type="submit">Enviar</button>
+              <button class="button btn-disabled" type="submit" disabled>Enviar</button>
               <button class="button btn-outline" type="reset">Limpiar</button>
             </div>
           </form>
@@ -44,6 +72,7 @@
         <div class="container">
           <h1 class="press-start-2p titles">MIS PRODUCTOS:</h1>
           <div id="product-grid" class="product-grid">
+            <p class="no-products">No se han agregado productos</p>
             <!-- <div class="card">
               <div class="img-container">
                 <img src="assets/images/imagen1.jpg" alt="" />

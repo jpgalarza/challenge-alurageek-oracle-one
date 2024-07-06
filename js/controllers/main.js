@@ -1,3 +1,5 @@
+import { errorTypes, messages } from "../../helpers/customErrors.js";
+import { nameValidation, priceValidation, urlValidation } from "../../helpers/inputValidations.js";
 import { numberFormat } from "../../helpers/numberFormat.js";
 import { servicesProducts } from "../services/product-services.js";
 
@@ -7,6 +9,10 @@ function load() {
   render();
   document.querySelector('#form-data').addEventListener('submit', createProduct);
   document.querySelector('#product-grid').addEventListener('click', removeProduct);
+  document.querySelectorAll('.input-container input').forEach(input => {
+    input.addEventListener('blur', (e) => { validateInput(e), enableFormButton() });
+    input.addEventListener('invalid', (e) => { e.preventDefault(); validateInput(e); });
+  });
 };
 
 
@@ -33,6 +39,10 @@ const render = async () => {
   try {
     const productList = await servicesProducts.getProducts();
 
+    if(productList && productList.length > 0) {
+      document.querySelector('.no-products').style.display = 'none';
+    }
+
     productList.forEach(product => {
       const { id, name, price, image } = product;
       createCard(id, name, price, image);
@@ -45,18 +55,33 @@ const render = async () => {
 
 
 const createProduct = async (e) => {
-  e.preventDefault()
-
-  const name = e.target.elements["name"].value;
-  const price = e.target.elements["price"].value;
-  const image = e.target.elements["image"].value || 'assets/images/default-image.png';
-
   try {
-    await servicesProducts.postProduct(name, price, image);
+    e.preventDefault()
+    let validatedForm = true;
+
+    document.querySelectorAll('.input-container input').forEach(input => {
+      validateInput(input);
+      if (!input.validity.valid) {
+        validatedForm = false;
+      };
+    });
+    
+    if(validatedForm) {
+      const name = e.target.elements["name"].value;
+      const price = e.target.elements["price"].value;
+      const image = e.target.elements["image"].value || 'assets/images/default-image.png';
+
+      await servicesProducts.postProduct(name, price, image); 
+    }else {
+      const button = document.querySelector('#form-data button[type="submit"]');
+      button.classList.add('btn-disabled');
+      button.disabled = true;
+    };
+    
   } catch (error) {
     console.log(error);
-  }; 
-}
+  }
+};
 
 
 const removeProduct = async (e) => {
@@ -68,3 +93,73 @@ const removeProduct = async (e) => {
   }; 
   };
 }
+
+
+const validateInput = (e) => { 
+  const input = e.target || e; 
+  const errorMessageNode = input.nextElementSibling;
+  let mensaje;
+
+  input.classList.remove('input-error');
+  errorMessageNode.classList.remove('active-error');
+  errorMessageNode.textContent = '';
+
+  
+  if(!input.validity.valid && !input.validity.customError) {
+    errorTypes.forEach((error) => {
+      if (input.validity[error]) {
+        mensaje = messages[input.name][error];
+      }
+    });
+
+    input.classList.add('input-error');
+    errorMessageNode.classList.add('active-error');
+    errorMessageNode.textContent = mensaje;
+    return;
+  };
+
+  input.setCustomValidity('');
+
+  const value = input.value;
+
+  if(input.name == "name") {
+    nameValidation(input, value);
+  };
+
+  if(input.name === 'price') {
+    priceValidation(input, value);
+  };
+
+  if(input.name === 'image') {
+    urlValidation(input, value);
+  };
+
+  
+  if(input.validity.customError) {
+    mensaje = messages[input.name].customError;
+  
+    input.classList.add('input-error');
+    errorMessageNode.classList.add('active-error');
+    errorMessageNode.textContent = mensaje;
+  };
+};
+
+
+const enableFormButton = () => {
+  const button = document.querySelector('#form-data button[type="submit"]');
+  let enable = true;
+  
+  document.querySelectorAll('.input-container input').forEach(input => {
+    if (!input.validity.valid) {
+      enable = false;
+    };
+  });
+
+  if(enable) {
+    button.classList.remove('btn-disabled');
+    button.disabled = false;
+  }else {
+    button.classList.add('btn-disabled');
+    button.disabled = true;
+  };
+};

@@ -3,56 +3,32 @@
     {
       "id": "1",
       "name": "Stormtrooper",
-      "price": "60000.20",
+      "price": "6000.22",
       "image": "assets/images/imagen1.jpg"
     },
     {
       "id": "2",
       "name": "Game Boy Classic",
-      "price": "60",
+      "price": "3500",
       "image": "assets/images/imagen2.png"
     },
     {
-      "id": "3",
-      "name": "Stormtrooper",
-      "price": "10000",
-      "image": "assets/images/imagen1.jpg"
+      "id": "40fa",
+      "name": "Nintendo 64",
+      "price": "4050.95",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpQctg6uC0Kg4s44KH763_kpjbnt5ACP8jUQ&s"
     },
     {
-      "id": "4",
-      "name": "Game Boy Classic",
-      "price": "2000",
-      "image": "assets/images/imagen2.png"
+      "id": "1caa",
+      "name": "Sega Génesis",
+      "price": "3025.99",
+      "image": "https://museodeinformatica.org.ar/wp-content/uploads/2015/01/1280px-Sega-Genesis-Mk2-6button.jpg"
     },
     {
-      "id": "5",
-      "name": "Stormtrooper",
-      "price": "60",
-      "image": "assets/images/imagen1.jpg"
-    },
-    {
-      "id": "6",
-      "name": "Game Boy Classic",
-      "price": "60",
-      "image": "assets/images/imagen2.png"
-    },
-    {
-      "id": "7",
-      "name": "Stormtrooper",
-      "price": "60",
-      "image": "assets/images/imagen1.jpg"
-    },
-    {
-      "id": "8",
-      "name": "Game Boy Classic",
-      "price": "60",
-      "image": "assets/images/imagen2.png"
-    },
-    {
-      "id": "a2d5",
-      "name": "Juan Pablo Galarza",
-      "price": "12.02",
-      "image": "assets/images/default-image.png"
+      "id": "4435",
+      "name": "Play Station 1",
+      "price": "3990.50",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/PSX-Console-wController.png/1200px-PSX-Console-wController.png"
     }
   ]
 }
