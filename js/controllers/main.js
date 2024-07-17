@@ -26,7 +26,7 @@ const createCard = (id, name, price, image) => {
                           <p>${name}</p>
                           <div class="card-footer">
                             <p>$${numberFormat(price)}</p>
-                            <button data-id="${id}">
+                            <button>
                               <img src="assets/images/trash-icon.svg" alt="" data-id="${id}" />
                             </button>
                           </div>
@@ -67,11 +67,16 @@ const createProduct = async (e) => {
     });
     
     if(validatedForm) {
-      const name = e.target.elements["name"].value;
-      const price = e.target.elements["price"].value;
-      const image = e.target.elements["image"].value || 'assets/images/default-image.png';
+      const nameValue = e.target.elements["name"].value;
+      const priceValue = e.target.elements["price"].value;
+      const imageValue = e.target.elements["image"].value || 'assets/images/default-image.png';
 
-      await servicesProducts.postProduct(name, price, image); 
+      const { id, name, price, image } = await servicesProducts.postProduct(nameValue, priceValue, imageValue); 
+
+      createCard(id, name, price, image)
+
+      e.target.reset();
+
     }else {
       const button = document.querySelector('#form-data button[type="submit"]');
       button.classList.add('btn-disabled');
@@ -88,6 +93,8 @@ const removeProduct = async (e) => {
   if(e.target.dataset.id) {
     try {
     await servicesProducts.deleteProduct(e.target.dataset.id);
+    e.target.parentNode.parentNode.parentNode.remove();
+
   } catch (error) {
     console.log(error);
   }; 

@@ -15,7 +15,7 @@ export const urlValidation = (input, value) => {
   const pattern = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
   const url = value.trim();
 
-  if (url !== '' && !pattern.test(url)) {
+  if (url === '' || !pattern.test(url)) {
     input.setCustomValidity('error');
   };
 };
