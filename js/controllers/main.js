@@ -75,6 +75,14 @@ const createProduct = async (e) => {
 
       createCard(id, name, price, image)
 
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Producto creado exitosamente!!",
+        showConfirmButton: false,
+        timer: 1500
+      });
+
       e.target.reset();
 
     }else {
@@ -93,7 +101,16 @@ const removeProduct = async (e) => {
   if(e.target.dataset.id) {
     try {
     await servicesProducts.deleteProduct(e.target.dataset.id);
+    
     e.target.parentNode.parentNode.parentNode.remove();
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Producto eliminado!!",
+      showConfirmButton: false,
+      timer: 1500
+    });
 
   } catch (error) {
     console.log(error);
